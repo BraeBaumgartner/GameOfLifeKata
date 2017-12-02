@@ -9,7 +9,7 @@ public class World {
 	
 	
 	public World(String filename) {
-		this.grid = new boolean[0][0];
+		this.grid = null;
 		File file = new File(filename);
 		BufferedReader reader = null;
 		
@@ -28,6 +28,7 @@ public class World {
 				int lineWidth = line.length();
 				if(lineWidth != this.worldWidth) {
 					valid = false;
+					System.out.println("File "+filename+" is not a rectangular grid.");
 					break;
 				}
 				boolean[] worldRow = new boolean[this.worldWidth];
@@ -38,6 +39,7 @@ public class World {
 						worldRow[i] = true;
 					} else {
 						valid = false;
+						System.out.println("File "+filename+" contains invalid characters.");
 						break;
 					}
 				}
@@ -81,7 +83,7 @@ public class World {
 		int count = 0;
 		for (int i = row-1;i<=row+1;i++) {
 			for(int j = col-1;j<=col+1;j++) {
-				//Do not count the cell [row][col], a cell is not its own neighbor
+				//Do not count the cell this.grid[row][col], as a cell is not its own neighbor
 				if(this.isAlive(i,j) && (i!=row || j!=col)) {
 					count++;
 				}
@@ -90,6 +92,24 @@ public class World {
 		return count;
 	}
 	
+	//Convert the grid to a string
+	public String toString() {
+		StringBuffer s = new StringBuffer();
+		for(int row=0;row<this.worldHeight;row++) {
+			for(int col=0;col<this.worldWidth;col++) {
+				if(this.grid[row][col]) {
+					s.append('0');
+				} else {
+					s.append('.');
+				}
+			}
+			s.append('\n');
+		}
+		return s.toString();
+	}
+	
+	
+	//Update this.grid to the next generation according to the rules of Conway's Game of Life
 	public void update() {
 		boolean[][] tempGrid = new boolean[worldHeight][worldWidth];
 		for(int row=0; row < this.worldHeight;row++) {

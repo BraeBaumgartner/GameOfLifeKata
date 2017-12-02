@@ -33,16 +33,14 @@ class GameOfLifeTest {
 	@Test
 	void failOnInvalidChars() {
 		World w = new World("samples/invalidCharacter");
-		boolean[][] result = new boolean[0][0];
-		assertArrayEquals(result,w.grid);
+		assertNull(w.grid);
 	}
 	
 	//Test to ensure that World does not attempt to build from a jagged array
 	@Test
 	void failOnInconsistentRowLength() {
 		World w = new World("samples/inconsistentRowLengths");
-		boolean[][] result = new boolean[0][0];
-		assertArrayEquals(result,w.grid);
+		assertNull(w.grid);
 	}
 	
 	//Test to ensure that cells with too few living neighbors die
@@ -103,5 +101,16 @@ class GameOfLifeTest {
 				{true,true,false},
 				{false,false,false}};
 		assertArrayEquals(result,w.grid);
+	}
+	
+	//Test to ensure that toString properly converts the world to a string
+	@Test
+	void toStringTest() {
+		World w = new World("samples/createLivingCell");
+		String output = w.toString();
+		String result = "00.\n" + 
+				"0..\n" + 
+				"...\n";
+		assertEquals(result,output);
 	}
 }
