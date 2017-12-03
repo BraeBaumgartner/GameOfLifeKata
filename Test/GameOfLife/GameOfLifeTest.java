@@ -1,15 +1,19 @@
 package GameOfLife;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 import GameOfLife.World;
 
-class GameOfLifeTest {
+public class GameOfLifeTest {
 	
 	//Test to ensure that World reads from input file correctly
 	@Test
-	void readWorldFromFile() {
+	public void readWorldFromFile() {
 		World w = new World("samples/test1");
 		/*
 		 * result matches the following grid:
@@ -31,21 +35,21 @@ class GameOfLifeTest {
 
 	//Test to ensure that World properly handles invalid characters
 	@Test
-	void failOnInvalidChars() {
+	public void failOnInvalidChars() {
 		World w = new World("samples/invalidCharacter");
 		assertNull(w.grid);
 	}
 	
 	//Test to ensure that World does not attempt to build from a jagged array
 	@Test
-	void failOnInconsistentRowLength() {
+	public void failOnInconsistentRowLength() {
 		World w = new World("samples/inconsistentRowLengths");
 		assertNull(w.grid);
 	}
 	
 	//Test to ensure that cells with too few living neighbors die
 	@Test
-	void liveCellWithFewerThanTwoNeighborsDies() {
+	public void liveCellWithFewerThanTwoNeighborsDies() {
 		World w = new World("samples/tooFewNeighbors");
 		w.update();
 		/*
@@ -60,7 +64,7 @@ class GameOfLifeTest {
 
 	//Test to ensure that living cells continue living with two or three neighbors
 	@Test
-	void liveCellWithTwoOrThreeNeighborsLives() {
+	public void liveCellWithTwoOrThreeNeighborsLives() {
 		World w = new World("samples/enoughNeighbors");
 		w.update();
 		/*
@@ -83,7 +87,7 @@ class GameOfLifeTest {
 
 	//Test to ensure that cells with too many neighbors die
 	@Test
-	void liveCellWithFourOrMoreNeighborsDies() {
+	public void liveCellWithFourOrMoreNeighborsDies() {
 		World w = new World("samples/tooManyNeighbors");
 		w.update();
 		boolean[][] result = {{true,false,true},
@@ -94,7 +98,7 @@ class GameOfLifeTest {
 	
 	//Test to ensure that dead cells with exactly three neighbors become live cells
 	@Test
-	void deadCellWithThreeNeighborsLives() {
+	public void deadCellWithThreeNeighborsLives() {
 		World w = new World("samples/createLivingCell");
 		w.update();
 		boolean[][] result = {{true,true,false},
@@ -105,12 +109,16 @@ class GameOfLifeTest {
 	
 	//Test to ensure that toString properly converts the world to a string
 	@Test
-	void toStringTest() {
+	public void toStringTest() {
 		World w = new World("samples/createLivingCell");
 		String output = w.toString();
 		String result = "00.\n" + 
 				"0..\n" + 
 				"...\n";
 		assertEquals(result,output);
+	}
+	
+	public static void main(String[] args) throws Exception {                    
+	       JUnitCore.main("GameOfLife.GameOfLifeTest");            
 	}
 }
