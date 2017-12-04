@@ -47,6 +47,13 @@ public class GameOfLifeTest {
 		assertNull(w.grid);
 	}
 	
+	//Test to ensure that World does not attempt to build from an empty file
+	@Test
+	public void failOnEmptyFile() {
+		World w = new World("samples/empty");
+		assertNull(w.grid);
+	}
+	
 	//Test to ensure that cells with too few living neighbors die
 	@Test
 	public void liveCellWithFewerThanTwoNeighborsDies() {

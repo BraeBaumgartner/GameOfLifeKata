@@ -18,12 +18,19 @@ public class World {
 		try {
 		    reader = new BufferedReader(new FileReader(file));
 		    String line = reader.readLine();
-			this.worldWidth = line.length();
-			/*
+		    /*
 			 * valid is a flag that is set to false when either the input file is not a
-			 * rectangular grid, or the input file contains characters besides '.' and '0'
+			 * rectangular grid, the file is empty, or the input file contains characters 
+			 * besides '.' and '0'
 			 */
 			boolean valid = true;
+		    if(line != null) {
+		    	this.worldWidth = line.length();
+		    } else {
+		    	System.out.println("File "+filename+" must not be empty.");
+		    	valid = false;
+		    }
+			
 			while(line != null && valid) {
 				int lineWidth = line.length();
 				if(lineWidth != this.worldWidth) {
