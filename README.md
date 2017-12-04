@@ -64,6 +64,8 @@ The program prompts users to enter the name of a text file containing a Game of 
 
 ## Design Choices
 
-The world was implemented as a two-dimensional array of booleans, with true representing a living cell and false representing a dead cell.  This decision make iterating over each cell in the world much easier, and made checking whether or not a cell was alive easier as well.
+The world was implemented as a two-dimensional array of booleans, with true representing a living cell and false representing a dead cell.  This decision made iterating over each cell in the world much easier, and made checking whether or not a cell was alive easier as well.
+
+The update() method only attempts to update each cell once, achieving a run time that scales linearly with the size of the world.
 
 Having the user pass in a text file, rather than directly entering the grid when prompted, makes using the program much easier since the user will not need to worry about having to reenter an entire grid by hand as a result of a typo.
