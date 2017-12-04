@@ -3,12 +3,12 @@ Implementation of Conway's Game of Life for coding evaluation.
 
 ##Rules of the Game
 
-The board (or playing field) for the Game of Life is a two dimensional grid of cells. Each cell is considered to be either “alive” or “dead”. The next generation of the grid is calculated using these rules:
+The board (or playing field) for the Game of Life is a two dimensional grid of cells. Each cell is considered to be either â€œaliveâ€� or â€œdeadâ€�. The next generation of the grid is calculated using these rules:
 1. Any live cell with fewer than two live neighbors dies, as if caused by under population.
 2. Any live cell with more than three live neighbors dies, as if by overcrowding.
 3. Any live cell with two or three live neighbors lives on to the next generation.
 4. Any dead cell with exactly three live neighbors becomes a live cell.
-5. A cell’s neighbors are those cells which are horizontally, vertically or diagonally adjacent. Most cells will have eight neighbors. Cells placed on the edge of the grid will have fewer.
+5. A cellâ€™s neighbors are those cells which are horizontally, vertically or diagonally adjacent. Most cells will have eight neighbors. Cells placed on the edge of the grid will have fewer.
 
 More information on Conway's Game of Life can be found at https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
@@ -39,9 +39,9 @@ $java -jar GameOfLifeTest.jar
 ```
 The program will output the results of running the test file to the terminal
 
-## Building from Source
+## Running from Source
 
-Jar files for both the test cases and main program are included in this repository, so building them from source should not be required. However, instructions for building these executables from source are still included below.
+Jar files for both the test cases and main program are included in this repository, so building them from source should not be required. However, instructions for running this project from source are still included below.
 
 Both .jar files were built in the Eclipse IDE, which can be downloaded from https://www.eclipse.org/.  
 
@@ -49,12 +49,11 @@ Both .jar files were built in the Eclipse IDE, which can be downloaded from http
 With Eclipse installed and open, import the project into eclipse by selecting ```File>Import>General>Existing Projects into Workspace```
 Then press Next at the bottom, and set the GameOfLifeKata folder as the root for the project.  Finally, click Finish to import the project into Eclipse.
 
-### Building the main executable
-In Eclipse, select ```File>Export>Java>Runnable Jar File``` then click Next.
-Use the Launch configuration GameOfLife - GameOfLifeKata and click Finish to build the .jar file.
-### Building the unit test file
-In Eclipse, select ```File>Export>Java>Runnable Jar File``` then click Next.
-Use the Launch configuration GameOfLifeTest - GameOfLifeKata and click Finish to build the .jar file.
+### Running the main executable
+Now that the project has been imported, select ```src>GameOfLife>GameOfLife.java``` and click the green Run arrow to run the program within Eclipse
+
+### Running the unit test file
+Now that the project has been imported, select ```Test>GameOfLife>GameOfLifeTest.java``` and click the green Run arrow to run the test program within Eclipse
 
 
 ## Implemented Features
@@ -67,4 +66,4 @@ The program prompts users to enter the name of a text file containing a Game of 
 
 The world was implemented as a two-dimensional array of booleans, with true representing a living cell and false representing a dead cell.  This decision make iterating over each cell in the world much easier, and made checking whether or not a cell was alive easier as well.
 
-Having the user pass in a text file, rather than directly entering the grid when prompted, makes using the program much easier since they will not need to worry about having to reenter a grid as a 
+Having the user pass in a text file, rather than directly entering the grid when prompted, makes using the program much easier since the user will not need to worry about having to reenter an entire grid by hand as a result of a typo.
