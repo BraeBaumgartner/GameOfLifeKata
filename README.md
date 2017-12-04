@@ -33,6 +33,8 @@ The program will prompt the user to enter a text file containing a valid Game of
 A valid game of life world is a text file where each line contains the same number of characters, forming a rectangular grid.  The only valid characters are '0' (zero), representing a living cell, and '.' (period), representing a dead cell.
 
 ### Running the Test Cases
+NOTE: Tests cases must be run while in the directory containing the ```samples``` folder (the root directory of the project, by default), otherwise the unit tests will not be able to find the test worlds.
+
 The test cases can be run by executing the following command in a command prompt:
 ```
 $java -jar GameOfLifeTest.jar
